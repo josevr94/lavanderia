@@ -1,0 +1,48 @@
+{% extends 'ordendeservicio/home.html' %}
+{% load crispy_forms_tags %}  
+
+
+{% block content %}
+    <form action="" method="get">
+        {% csrf_token %}
+        {{form | crispy }}
+        <button type="submit" class = 'btn btn-primary mt-2'>Aceptar</button>
+    </form>
+
+<table class='table'>
+
+<tr>
+    <th>id de orden</th>
+    <th>cliente</th>
+    <th>empleado</th>
+    <th>metodo de pago</th>
+    <th>fecha</th>
+    <th>monto total</th>
+</tr>
+
+{% for orde in orden %}
+    
+
+    
+<tr>
+    <td>{{orde.id}}</td>
+    <td>{{orde.orden.cliente.nombre}}</td>
+    <td>{{orde.orden.empleado.nombre}}</td>
+    <td>{{orde.metodo_pago}}</td>
+    <td>{{orde.fecha}}</td>
+    <td>{{orde.monto_total}}</td>
+</tr>
+{% endfor %}
+
+
+
+
+</table>    
+
+
+
+
+
+
+{% endblock content %}
+    

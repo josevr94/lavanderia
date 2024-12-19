@@ -1,0 +1,45 @@
+{% extends 'ordendeservicio/home.html' %} 
+{% load crispy_forms_tags %}   
+
+
+{% block titulo %}
+    |Confirmar venta
+{% endblock titulo %}
+    
+
+
+{% block content %}
+    
+<div class="card mt-2">
+    <div class="card-body">
+        <h2>Resumen de la Venta</h2>
+        <p><strong>Orden de Servicio:</strong> {{ orden.id }}</p>
+        <p><strong>Cliente:</strong> {{ orden.cliente.nombre }}</p>
+        <p><strong>Empleado:</strong> {{ orden.empleado.nombre }}</p>
+        <p><strong>Estado:</strong> {{ orden.estado }}</p>
+    
+        <h3>Prendas Seleccionadas</h3>
+    
+        <ul>
+          {% for prenda_orden in prendas_ordenadas %}
+          <li>
+              <p><strong>{{ prenda_orden.prenda.tipo  }}</strong> - cantidad:  {{  prenda_orden.cantidad }} </p>
+                Total por {{prenda_orden.prenda.tipo}} = {{ prenda_orden.subtotal }}
+          </li>
+          {% endfor %}
+      </ul>
+      
+        <p><strong>Monto Total:</strong> {{ orden.calcular_total }}</p>
+    </div>
+  </div>
+    
+   
+
+    <h2>Selecciona Método de Pago</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class='btn btn-primary mt-2'>Guardar Venta</button>
+    </form>
+
+    {% endblock content %}

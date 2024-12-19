@@ -1,0 +1,35 @@
+{% extends 'ordendeservicio/home.html' %} 
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class='d-flex justify-content-center mt-4'>
+<div class="card ">
+    <div class="card-body">
+        <h1>Resumen de la Venta</h1>
+        <br>
+        <p>Orden de Servicio: {{ venta.orden.id }}</p>
+        <hr>
+        <p>Cliente: {{ venta.orden.cliente.nombre }}</p>
+        <hr>
+        <p>Empleado: {{ venta.orden.empleado.nombre }}</p>
+        <hr>
+        <p>Monto Total: {{ venta.monto_total }}</p>
+        <hr>
+        <p>Método de Pago: {{ venta.metodo_pago }}</p>
+        <hr>
+        <p>Estado: {{venta.orden.estado}}</p>
+        <br>
+        <br>
+        <a href="{% url 'lista' %}">Ver todas las Ventas</a> |
+<a href="{% url 'home' %}">Home</a>
+    </div>
+    
+  </div>
+  
+</div>    
+ 
+
+
+
+{% endblock content %}

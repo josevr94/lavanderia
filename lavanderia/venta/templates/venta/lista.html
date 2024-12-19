@@ -1,0 +1,41 @@
+{% extends 'ordendeservicio/home.html' %} 
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+<table class="table">
+    
+    
+        
+
+    <thead>
+      <tr>
+        <th scope="col">Orden de servicio</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Empleado</th>
+        <th scope="col">Metodo de pago</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Monto Total</th>
+        <th scope="col">Ver Prendas</th>
+        <th scope='col'>Actualizar </th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for venta in ventas %}
+     <tr>
+        <td>{{venta.id}}</td>
+        <td>{{venta.orden.cliente.nombre}}</td>
+        <td>{{venta.orden.empleado.nombre}}</td>
+        <td>{{venta.metodo_pago}}</td>
+        <td>{{venta.orden.estado}}</td>
+        <td>{{venta.monto_total}}</td>
+        <td><a href="{% url 'detalles_prendas' venta.pk %}">Ver</a></td>
+        <td><a href="{% url 'editar' venta.orden.id %}">Actualizar</a></td>
+     </tr>
+    </tbody>
+    {% endfor %}
+        
+  </table>
+{% endblock content %}
+    

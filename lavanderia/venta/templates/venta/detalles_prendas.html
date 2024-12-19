@@ -1,0 +1,47 @@
+{% extends 'ordendeservicio/home.html' %} 
+{% load crispy_forms_tags %}
+
+
+
+
+{% block content %}
+<div class="card mt-4">
+    <div class="card-body">
+      <h2>Detalle Prendas de la Orden Numero: {{venta.id}}</h2>
+      <hr>
+      <table class='table'>
+        
+        <thead>
+            <tr>
+            <th>Prenda</th>
+            <th>Cantidad</th>
+            <th>SubTotal</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+            {% for prenda_orden in prendas %}
+                
+           
+                
+        <tr>
+            <td>{{prenda_orden.prenda.tipo}}</td>
+            <td>{{prenda_orden.cantidad}}</td>
+            <td>{{ prenda_orden.subtotal }}</td> 
+        </tr>
+      
+    </tbody>
+    {% endfor %}
+      </table>
+
+      <a href="{% url 'lista' %}">Volver a la lista</a>
+      
+    </div>
+  </div>
+
+
+
+
+
+{% endblock content %}
+    

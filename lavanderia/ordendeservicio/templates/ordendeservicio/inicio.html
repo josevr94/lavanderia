@@ -1,0 +1,12 @@
+{% extends 'ordendeservicio/home.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class='container'>
+    <img src="{% static 'img/laundry.jpg' %}" class="img-fluid" alt="...">  
+    <div class='d-flex justify-content-center'>
+      <a href="{% url 'formulario' %}"><button type="submit" class ='btn btn-primary mt-5'>Empezar a Lavar </button></a>
+    </div>
+{% endblock content %}
+    
